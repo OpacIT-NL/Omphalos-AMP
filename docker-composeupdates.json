@@ -1,0 +1,10 @@
+[
+    {
+        "UpdateStageName": "Pull Docker Compose Images",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/usr/bin/env",
+        "UpdateSourceArgs": "docker compose --ansi never --file \"{{ComposeFile}}\" --project-name \"{{ProjectName}}\" pull {{PullArguments}}",
+        "SkipOnFailure": false
+    }
+]

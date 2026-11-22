@@ -1,5 +1,15 @@
 [
     {
+        "UpdateStageName": "Download Omphalos App",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"set -e; cd node-server; Protocol=\\\"{{RepoProtocol}}\\\"; Host=\\\"{{RepoHost}}\\\"; Port=\\\"{{RepoPort}}\\\"; AppName=\\\"{{RepoAppName}}\\\"; Phase=\\\"{{RepoPhase}}\\\"; VersionType=\\\"{{RepoVersionType}}\\\"; CustomVersion=\\\"{{RepoCustomVersion}}\\\"; if [[ \\\"$VersionType\\\" == \\\"Latest\\\" ]]; then PackageName=\\\"latest.zip\\\"; else [[ -n \\\"$CustomVersion\\\" ]] || { echo \\\"Custom version is required when Version is set to Custom\\\"; exit 1; }; LowerAppName=$(printf '%s' \\\"$AppName\\\" | tr '[:upper:]' '[:lower:]'); PackageName=\\\"${LowerAppName}.${CustomVersion}.zip\\\"; fi; DownloadUrl=\\\"${Protocol}://${Host}:${Port}/repo/${AppName}${Phase}/${PackageName}\\\"; InsecureArg=\\\"\\\"; if [[ \\\"$Protocol\\\" == \\\"https\\\" && \\\"{{RepoAllowInsecure}}\\\" == \\\"true\\\" ]]; then InsecureArg=\\\"--no-check-certificate\\\"; fi; echo \\\"Downloading $DownloadUrl\\\"; rm -f omphalos-app.zip; wget $InsecureArg -O omphalos-app.zip \\\"$DownloadUrl\\\"; mkdir -p app; unzip -o omphalos-app.zip -d app >/dev/null; rm -f omphalos-app.zip; echo \\\"Omphalos app downloaded and extracted\\\"\"",
+        "UpdateSourceConditionSetting": "DownloadType",
+        "UpdateSourceConditionValue": "OmphalosRepo",
+        "SkipOnFailure": false
+    },
+    {
         "UpdateStageName": "App Download",
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "Executable",

@@ -1,0 +1,17 @@
+[
+    {
+        "Protocol": "Both",
+        "Port": 7777,
+        "Ref": "ServerPort",
+        "Name": "Application Port",
+        "Description": "Main port used by the downloaded application"
+    },
+    {
+        "Protocol": "TCP",
+        "Port": 2400,
+        "Range": 1,
+        "Ref": "SSHPort",
+        "Name": "SSH Port",
+        "Description": "SSH port for the application console; allocate Omphalos Apps instances from the 2400-2499 pool"
+    }
+]
